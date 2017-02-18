@@ -1,4 +1,3 @@
-# react-todo-list
+# Learn React
 
-This is a simple todo list app built with React, Redux and Webpack. I built this app during my [tutorial series on YouTube](https://www.youtube.com/playlist?list=PLQDnxXqV213JJFtDaG0aE9vqvp6Wm7nBg).
-"# epp-ui" 
+This is the UI side to learn react to implement in serverless architecture
