@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 const App = React.createClass({
     render(){
-        return <div> This is definitely a React app now!!</div>
+        return <div> This is definitely a React app now!! after reloding</div>
     }
 })
 export default App;
