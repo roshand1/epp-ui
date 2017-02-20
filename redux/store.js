@@ -7,6 +7,6 @@ let finalCreateStore = compose(
 )(createStore)
 
 
-export default function configureStore() {
-  return finalCreateStore(reducer)
+export default function configureStore(initialState = { todos: [] }) {
+  return finalCreateStore(reducer, initialState)
 }
