@@ -19,12 +19,16 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.(es|es6|js|jsx)$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
                 query: {
                     presets: ['react', 'es2015','react-hmre']
                 }
+            },
+            { 
+               test: /\.less$/, 
+               loader: 'style-loader!css-loader!less-loader!postcss-loader' 
             }
         ]
     }
