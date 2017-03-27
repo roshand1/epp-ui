@@ -2,18 +2,26 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import reducer from './reducer'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
+import {getSomething} from './actions/action';
 
-// let finalCreateStore = compose(
-//   applyMiddleware(logger(),thunk)
-// )(createStore)
-
-const middleware =  applyMiddleware(thunk, logger())
-
-const store = createStore(reducer, middleware)
+let createStoreWithMiddleWare =window.__REDUX_DEVTOOLS_EXTENSION__ ? compose(
+  applyMiddleware(logger(),thunk),(window.__REDUX_DEVTOOLS_EXTENSION__())
+):compose( applyMiddleware(logger(),thunk));
+const initialState={
+                    practiceModel: {
+                                    providerArr:[],
+                                    Location:[]
+                                    }
+                    };
+ const store = createStoreWithMiddleWare(createStore)(reducer,initialState);
+store.dispatch(getSomething())
 console.log(store);
 export default store;
 
-// export default function configureStore(initialState = { todos: [] }) {
-//   return finalCreateStore(reducer, middleware)
-// }
+
+//------------------------------Create Store Without initialState ------------------------
+// const store = createStore(reducer, createStoreWithMiddleWare)
+// store.dispatch(getSomething())
+// console.log(store);
+// export default store;
 
