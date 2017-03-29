@@ -15003,7 +15003,6 @@ var App = _wrapComponent('_component')(_react3.default.createClass({
     displayName: 'App',
     render: function render() {
         //const practiceModel = this.props.practiceModel.getState().practiceReducer.practiceModel;
-        debugger;
         return _react3.default.createElement(
             'div',
             null,

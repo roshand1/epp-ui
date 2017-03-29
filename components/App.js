@@ -4,7 +4,6 @@ import BadgesContainer from './Badges/BadgesContainer.jsx'
 const App = React.createClass({
     render(){
         //const practiceModel = this.props.practiceModel.getState().practiceReducer.practiceModel;
-        debugger;
         return <div> This is definitely a React app now!! after reloding
                     <BadgesContainer badgeType={0} badgesUrl={'https://s3.amazonaws.com/paidpremiumtest/Provider/x2mt8/Files/badges.json'}/>
                 </div>

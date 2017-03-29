@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
-import { connect } from 'react-redux';
-import BadgesStateToProps from '../../redux/BadgesStateToProps.es';
 
 const Badges = React.createClass({
 
@@ -21,4 +19,4 @@ const Badges = React.createClass({
     return null;
   }
 });
-export default connect(BadgesStateToProps)(Badges);
+export default Badges;

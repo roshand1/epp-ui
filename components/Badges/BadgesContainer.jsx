@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
 import Badges from './Badges.jsx';
 import store from '../../redux/reducer.js';
+import {getBadgesModel} from '../../redux/actions/BadgesAction.es';
+import BadgesStateToProps from '../../redux/stateToProps/BadgesStateToProps.es';
 import * as actions from '../../redux/actions/BadgesAction.es';
 
 const BadgesContainer = React.createClass({
@@ -11,27 +14,24 @@ const BadgesContainer = React.createClass({
     badgeType: PropTypes.number,
     badgesUrl: PropTypes.string
   },
-  // componentWillMount () {
-  //   this.store = stateStore.initializeStore();
-  // },
-    componentWillMount () {
-    this.store = store;
-  },
   componentDidMount () {
-    debugger;
     if (this.props.badgesUrl) {
-      //this.store.dispatch(actions.getBadgesModel(this.props.badgesUrl, this.props.badgeType));
-      store.dispatch(actions.getBadgesModel(this.props.badgesUrl, this.props.badgeType))
+      const { getBadgesModel} = this.props;
+      getBadgesModel(this.props.badgesUrl, this.props.badgeType);
     }
   },
   render () {
     if (this.props.badgesUrl) {
       return (
         <div>
-            <Badges badgeType={this.props.badgeType} />
+            <Badges badgeModel={this.props.badgeModel} />
         </div>
       );
     } return null;
   }
 });
-export default BadgesContainer;
+
+const mapStateToProps = (state) => {
+  badgeModel:state.badgeModel;
+};
+export default connect(BadgesStateToProps, actions)(BadgesContainer);

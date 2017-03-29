@@ -6,7 +6,6 @@
                                     }
                     };
 let reducer = function(state = {}, action) {
-  debugger;
   switch (action.type) {
     case 'FETCH_PROV':
       return Object.assign({}, state, {

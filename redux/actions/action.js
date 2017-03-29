@@ -12,7 +12,6 @@ return {
           return fetch('http://localhost:56054/Provider/GetProviders?practiceId=YBSXXW&skip=0&take=10')
           .then((response)=> response.json())
           .then((response) =>{
-              debugger;
               return dispatch(actions.fetchProvidersSuccess(response));
           })
           .catch(logger.error);
@@ -26,7 +25,6 @@ export function getProvidersByFunc(){
         fetch('https://8afzabjeui.execute-api.us-east-1.amazonaws.com/Prod/GetProviders?practiceId=YBSXXW&skip=0&take=10')
           .then((response)=> response.json())
           .then((response) =>{
-              debugger;
               dispatch({type:'FETCH_PROV',payload:response});
           })
           .catch((error)=>{
