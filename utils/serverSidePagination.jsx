@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
 
 const HgPaginationComp = React.createClass({
-mixins:[PureRenderComponent],
+mixins:[PureRenderMixin],
   
     propTypes : {
         itemCountPerPage:PropTypes.number,
@@ -68,28 +68,28 @@ render (){
 var renderPreviousPageBtn = function(){
     if (this.state.currentPage === 1)
     {
-        return <a role="button" className={'pager-btn prev btn disabled'} onClick={this.previousPage}>
+        return <button role="button" className={'pager-btn prev btn disabled'} onClick={this.previousPage}>
                     <span className={'hg3-i hg3-i-chevron-circle-left'}></span>
-               </a>
+               </button>
     }
     else{
-        return <a role="button" className={'pager-btn prev btn'} onClick={this.previousPage} data-id="previousPaginatoinBtn">
+        return <button role="button" className={'pager-btn prev btn'} onClick={this.previousPage} data-id="previousPaginatoinBtn">
                     <span className={'hg3-i hg3-i-chevron-circle-left'}></span>
-               </a>
+               </button>
     }
 }.bind(this);
 
 var renderNextPageBtn = function(){
     if (this.state.currentPage === this.totalPage())
     {
-        return <a role="button" className={'pager-btn next disabled'} onClick={this.nextPage}>
+        return <button role="button" className={'pager-btn next disabled'} onClick={this.nextPage}>
                     <span className={'hg3-i hg3-i-chevron-circle-right'}></span>
-               </a>
+               </button>
     }
     else{
-        return <a role="button" className={'pager-btn next'} onClick={this.nextPage} data-id="nextPaginatoinBtn">
+        return <button role="button" className={'pager-btn next'} onClick={this.nextPage} data-id="nextPaginatoinBtn">
                     <span className={'hg3-i hg3-i-chevron-circle-right'}></span>
-               </a>
+               </button>
     }
 }.bind(this);
 

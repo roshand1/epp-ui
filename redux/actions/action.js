@@ -1,44 +1,38 @@
 
-let actions = {
-fetchProvidersSuccess(providers){
-return {
-    type:'GET_PROVIDERS',
-    payload:providers
-    }
-},
-  fetchProviders(officeId){
-      return(dispatch) => {
-       
-          return fetch('http://localhost:56054/Provider/GetProviders?practiceId=YBSXXW&skip=0&take=10')
-          .then((response)=> response.json())
-          .then((response) =>{
-              return dispatch(actions.fetchProvidersSuccess(response));
-          })
-          .catch(logger.error);
-      }
-  }
+import _fetch from '../../utils/HelperFetch.js';
 
-}
-
-export function getProvidersByFunc(){
+export function getPracticeModel(){
     return function(dispatch){
-        fetch('https://8afzabjeui.execute-api.us-east-1.amazonaws.com/Prod/GetProviders?practiceId=YBSXXW&skip=0&take=10')
-          .then((response)=> response.json())
-          .then((response) =>{
-              dispatch({type:'FETCH_PROV',payload:response});
-          })
-          .catch((error)=>{
-              return dispatch({type:'FETCH_PROV_ERROR',payload:error});
-          });
+        _fetch('https://www.healthgrades.com/uisvc/v1_0/eppuiservice/api/Provider/GetViewModel?officeId=oo65fmp',{method:'GET'},function(status, practiceModel){
+            if(status =='OK'){
+               dispatch({type:'FETCH_PRAC_MODEL_SUCCESS',payload:practiceModel});
+                var event = new CustomEvent('displayAds', { 'detail': {AdModel:practiceModel.Adds,OmniturePageTracking:practiceModel.OmniturePageTracking} });
+                document.dispatchEvent(event);
+            }else{
+              return dispatch({type:'FETCH_PRAC_MODEL_ERROR',payload:error});
+            }
+        }) //YBRWWS , oo65fmp
     }
-}
+};
 
-export function provideStaticData(){
-    return{
-        type:'GET_STATICDATA',
-        payload:'this is static'
+//TestUrl
+//https://test.healthgrades.com/uisvc/v1_0/EPPUIService/api/Provider/GetProviders?practiceId=PP328S6&skip=5&take=5
+//Prod
+//https://www.healthgrades.com/uisvc/v1_0/eppuiservice/api/Provider/GetViewModel?officeId=oo65fmp
+
+export function getProvidersByPracticeId(practiceId, skip, take){
+const uri = '?practiceId=' + practiceId +'&skip='+skip+'&take='+take;
+    return function(dispatch){
+        _fetch('https://www.healthgrades.com/uisvc/v1_0/eppuiservice/api/Provider/GetProviders'+uri,{method:'GET'},function(status, response){
+            if(status == 'OK'){
+                dispatch({type:'FETCH_PROV_SUCCESS',payload:response});
+            }
+            else{
+                 return dispatch({type:'FETCH_PRAC_MODEL_ERROR',payload:error});
+            }
+        })
     }
-}
+};
 
 
 export function getSomething() {
@@ -50,5 +44,3 @@ export function getSomething() {
           dispatch({type:'GET_SOMETHING',payload:response});
     }
 }
-
-export default actions

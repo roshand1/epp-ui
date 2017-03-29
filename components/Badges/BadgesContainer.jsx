@@ -2,13 +2,11 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
 import Badges from './Badges.jsx';
-import store from '../../redux/reducer.js';
 import {getBadgesModel} from '../../redux/actions/BadgesAction.es';
 import BadgesStateToProps from '../../redux/stateToProps/BadgesStateToProps.es';
 import * as actions from '../../redux/actions/BadgesAction.es';
 
 const BadgesContainer = React.createClass({
-
   mixins: [PureRenderMixin],
   propTypes: {
     badgeType: PropTypes.number,
@@ -30,8 +28,4 @@ const BadgesContainer = React.createClass({
     } return null;
   }
 });
-
-const mapStateToProps = (state) => {
-  badgeModel:state.badgeModel;
-};
 export default connect(BadgesStateToProps, actions)(BadgesContainer);

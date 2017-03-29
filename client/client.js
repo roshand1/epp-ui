@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 
 render(
     <Provider store={store}>
-    <App practiceModel={store}/>
+    <App practiceModel={store.getState().practiceModel}/>
       </Provider>,
     document.getElementById('app')//DOM element we want to mount it to
 )
