@@ -1,10 +1,10 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import reducer from './reducer'
+import reducer from './combineReducer'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
-import {getPracticeModel} from './actions/action';
+import {getPracticeModel} from './actions/PracticeModelAction.js';
 
-let createStoreWithMiddleWare =window.__REDUX_DEVTOOLS_EXTENSION__ ? compose(
+let createStoreWithMiddleWare =(typeof window !=='undefined' && window.__REDUX_DEVTOOLS_EXTENSION__) ? compose(
   applyMiddleware(logger(),thunk),(window.__REDUX_DEVTOOLS_EXTENSION__())
 ):compose( applyMiddleware(logger(),thunk));
 const initialState={

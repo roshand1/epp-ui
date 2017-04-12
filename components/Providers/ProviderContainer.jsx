@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import PureRenderMixin from 'react/lib/ReactComponentWithPureRenderMixin';
-import {getProvidersByPracticeId} from '../../redux/actions/action.js';
+import {getProvidersByPracticeId} from '../../redux/actions/PracticeModelAction.js';
 import ProviderArrayStateToProps from '../../redux/stateToProps/ProviderArrayStateToProps.es';
 import HgPaginationComp from '../../utils/serverSidePagination.jsx';
-import * as actions from '../../redux/actions/action.js';
+import * as actions from '../../redux/actions/PracticeModelAction.js';
 const ProviderContainer = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {

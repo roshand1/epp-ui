@@ -4,16 +4,9 @@ import ReactDOM from 'react-dom'
 import BadgesContainer from './Badges/BadgesContainer.jsx'
 import ProviderContainer from './Providers/ProviderContainer.jsx'
 import PracticeModelStateToProps from '../redux/stateToProps/PracticeModelStateToProps.es';
-import {getPracticeModel} from '../redux/actions/action.js';
-import * as actions from '../redux/actions/action.js';
+import {getPracticeModel} from '../redux/actions/PracticeModelAction.js';
+import * as actions from '../redux/actions/PracticeModelAction.js';
 const App = React.createClass({
-
-//       componentDidMount () {
-//       const { getPracticeModel} = this.props;
-//       getPracticeModel();
-//   },
-
-
     render(){
         debugger;
         const practiceModel = this.props.practiceModel?this.props.practiceModel:null;
@@ -32,15 +25,6 @@ const App = React.createClass({
         }return null;
     }
 })
-// function PracticeModelStateToProps(state) {
-//     if(state)
-//     {
-//   return {
-//     practiceModel: state.practiceModel
-//   };
-//     }else
-//     return null;
-// }
 export default connect(PracticeModelStateToProps,actions)(App);
  //export default App;
 
