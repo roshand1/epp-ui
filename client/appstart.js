@@ -1,5 +1,8 @@
- const serverSide = require('../dist/eppserverSideRender.js');
-//const clientApp = require('../dist/bundle');
+ //const serverSide = require('../dist/eppserverSideRender.js');
+ const serverSideBundle = require('../dist/bundle.js');
+require('babel-core/register');
+require('react');
+//.const clientApp = require('../dist/bundle.js');
 const ReactDOMServer = require('react-dom/server');
 const React = require('react');
 //const App = require('../components/App.js');
